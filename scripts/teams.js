@@ -38,7 +38,18 @@ function init() {
         teamList.appendChild(option);
     });
 
-   
+    const submitButton = document.getElementById("submitButton");
+    submitButton.addEventListener("click", displayTeamInfo);
+
+}
+
+function displayTeamInfo() {
+    const teamCode = document.getElementById("teamSelect").value;
+    const teamInfo = getAllTeamsInfo();
+    const selectedTeam = teamInfo.find(team => team.code === teamCode);
+
+    const teamInfoParagraph = document.getElementById("teamInfo");
+    teamInfoParagraph.textContent = `Team: ${selectedTeam.name}, Play in: ${selectedTeam.plays}`;
 }
 
 window.onload = function() {
