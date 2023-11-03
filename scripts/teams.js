@@ -1,3 +1,52 @@
+"use strict";
+
+let teams = [
+    { code: "DAL", name: "Dallas Cowboys", plays: "Arlington, TX" },
+    { code: "DEN", name: "Denver Broncos", plays: "Denver, CO" },
+    { code: "HOU", name: "Houston Texans", plays: "Houston, TX" },
+    { code: "KAN", name: "Kansas City Chiefs", plays: "Kansas City, MO" }
+];
+
+function initialize() {
+    let teamSelect = document.getElementById("teamSelect");
+
+    teams.forEach(function (team) {
+        let option = document.createElement("option");
+        option.value = team.code;
+        option.text = team.name;
+        teamSelect.appendChild(option);
+    });
+
+    let submitButton = document.getElementById("submitButton");
+    submitButton.addEventListener("click", displayTeamInfo);
+}
+
+function displayTeamInfo() {
+    let teamCode = document.getElementById("teamSelect").value;
+    let selectedTeam = teams.find(function (team) {
+        return team.code === teamCode;
+    });
+
+    let teamInfoParagraph = document.getElementById("teamInfo");
+    teamInfoParagraph.textContent = `Team: ${selectedTeam.name}, Plays in: ${selectedTeam.plays}`;
+}
+
+window.onload = function () {
+    initialize();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 function getTeamNames() {
     return [
             "Dallas Cowboys",
@@ -54,4 +103,6 @@ function displayTeamInfo() {
 
 window.onload = function() {
     init();
-};
+}; 
+\
+*/
